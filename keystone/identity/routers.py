@@ -82,3 +82,14 @@ class Routers(wsgi.RoutersBase):
             path_vars={
                 'user_id': json_home.Parameters.USER_ID,
             })
+
+        self._add_resource(
+            mapper, user_controller,
+            path='/users/{user_id}/gravatar',
+            post_action='enable_gravatar',
+            delete_action='disable_gravatar',
+            get_action='is_gravatar_enabled',
+            rel=json_home.build_v3_resource_relation('user_manage_gravatar'),
+            path_vars={
+                'user_id': json_home.Parameters.USER_ID,
+            })

@@ -275,6 +275,20 @@ class Identity(identity.Driver):
 
             session.delete(ref)
 
+    def enable_gravatar(self, user_id):
+        session = sql.get_session()
+
+        with session.begin():
+            ref = self._get_user(session, user_id)
+            ref.gravatar = True
+    
+    def disable_gravatar(self, user_id):
+        session = sql.get_session()
+
+        with session.begin():
+            ref = self._get_user(session, user_id)
+            ref.gravatar = False
+
     # group crud
 
     @sql.handle_conflicts(conflict_type='group')

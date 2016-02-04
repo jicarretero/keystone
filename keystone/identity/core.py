@@ -1054,6 +1054,19 @@ class Driver(object):
         """
         raise exception.NotImplemented()  # pragma: no cover
 
+    @abc.abstractmethod
+    def enable_gravatar(self, user_id):
+        """Enables Gravatar for a certain user.
+
+        """
+        raise exception.NotImplemented() # pragma: no cover
+
+    @abc.abstractmethod
+    def disable_gravatar(self, user_id):
+        """ Disables Gravatar for a certain user.
+
+        """
+
     # end of identity
 
 

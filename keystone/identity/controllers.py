@@ -275,6 +275,14 @@ class UserV3(controller.V3Controller):
         except AssertionError:
             raise exception.Unauthorized()
 
+    @controller.protected()
+    def enable_gravatar(self, context, user_id):
+        return self.identity_api.enable_gravatar(user)
+
+    @controller.protected()
+    def disable_gravatar(self, context, user_id):
+        return self.identity_api.disable_gravatar(user)
+
 
 @dependency.requires('identity_api')
 class GroupV3(controller.V3Controller):
